@@ -46,7 +46,7 @@ To compile this LaTeX document, you will need LaTeX installed on your system alo
 The project is organized as follows:
 
 - main.tex: The main LaTeX source file for the dissertation.
-- bibliography/: Contains the bibliography file.
+- bibliography.bib: The bibliography file.
 - fonts: any custom fonts used in the document.
 - images/: Directory with images used in the dissertation.
 - contents/: Contains the core components of the dissertation:

@@ -1,35 +1,29 @@
-% tipo di documento
+%----------------------------------------------------------------------
+% set the document type
 \documentclass[11pt, a4paper, twoside, openright]{report}
-% encoding del testo
+
+% include all packages needed
 \usepackage[T1]{fontenc}
-% dimensione dei margini
-\usepackage[a4paper,margin=1in]{geometry}
-% lingua per la bibliografia
-% lingua del testo
-\usepackage[english]{babel}
-% per inserire gli hyperlinks tra i vari elementi del testo 
-\usepackage[hidelinks]{hyperref}
-% lingua per la bibliografia
+\usepackage[a4paper,margin=1in]{geometry} % formatting
+\usepackage[english]{babel}               % language
+\usepackage[hidelinks]{hyperref}          % hyperlinks
+% bibliography
 \usepackage[backend=biber,
 style=geschichtsfrkl,
 sorting=ynt,
 defernumbers
 ]{biblatex}
-% Load your .bib file
+% load .bib file
 \addbibresource{bibliography.bib}
-\usepackage{enotez}
-% per modificare l'header delle pagine 
-\usepackage{fancyhdr}
-% uso delle immagini
-\usepackage{graphicx}  
-% package e comando per creare pagine vuote
-\usepackage{afterpage}
+\usepackage{enotez}                      % footnotes and endnotes 
+\usepackage{fancyhdr}                    % header and footer formatting
+\usepackage{graphicx}                    % images
+\usepackage{afterpage}                   % blank pages
 \usepackage{csquotes}
-\usepackage{url}
-\usepackage{fourier-orns}
-% Include the titlesec package
-\usepackage{titlesec}
-\usepackage[nottoc]{tocbibind}
+\usepackage{url}                         % urls
+\usepackage{fourier-orns}                % custom rules
+\usepackage{titlesec}                    % custom titles
+\usepackage[nottoc]{tocbibind}           % bibliography in the table of contents
 \usepackage{fontspec}
 \usepackage{xtemplate}
 
@@ -37,9 +31,9 @@ defernumbers
 \let\footnote=\endnote
 % Set up enotez for the whole document
 \setenotez{
-  backref = true,   % Enable back references
-  totoc = auto,     % Include in table of contents
-  reset = true,     % Reset endnote counters at each chapter
+  backref = true,                        % Enable back references
+  totoc = auto,                          % Include in table of contents
+  reset = true,                          % Reset endnote counters at each chapter
 }
 
 % blank page
@@ -50,7 +44,7 @@ defernumbers
     \newpage
 }
 
-% Modifica lo stile dell'header
+% change header and footer style
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\rightmark}
@@ -58,25 +52,22 @@ defernumbers
 \fancyfoot{}
 \setlength{\headheight}{15pt}
 
-
-% Set the main font to San Francisco by referencing the uploaded font files
-\setmainfont[
-    ItalicFont = NewYorkItalic.ttf,
-]{NewYork.ttf}
-% -----------------------------------------------------------------
-
-%fancy header
-\renewcommand{\headrule}{%
-\vspace{-8pt}\hrulefill
-\raisebox{-2.1pt}{\quad\decofourleft\decoone\decofourright\quad}\hrulefill}
-\title{Decorative line}
-
-% Modifica lo stile dell'header
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{}
 \rhead{}
 \setlength{\headheight}{16.64995pt}
+
+% custom headrule
+\renewcommand{\headrule}{%
+\vspace{-8pt}\hrulefill
+\raisebox{-2.1pt}{\quad\decofourleft\decoone\decofourright\quad}\hrulefill}
+\title{Decorative line}
+
+% Set the main font by referencing the uploaded font files .ttf
+\setmainfont[
+    ItalicFont = NewYorkItalic.ttf,
+]{NewYork.ttf}
 
 % Disable numbering for sections and subsections
 \makeatletter
@@ -87,15 +78,16 @@ defernumbers
 \renewcommand{\thesubsubsection}{}
 \renewcommand{\thepart}{}
 
-\renewcommand{\@dotsep}{1} % Adjust spacing between dots in TOC, if needed
+% Adjust spacing between dots in TOC, if needed
+\renewcommand{\@dotsep}{1}
 
 % Customize the part entry in TOC
-\renewcommand{\l@part}[2]{%
-  \par\addvspace{11pt plus\p@}%
-  {\normalfont \scshape #1\par\nobreak}}%
+\renewcommand{\l@part}[2]{
+  \par\addvspace{11pt plus\p@}
+  {\normalfont \scshape #1\par\nobreak}}
 
-\renewcommand{\l@chapter}[2]{%
-  \par\addvspace{11pt plus\p@}%
+\renewcommand{\l@chapter}[2]{
+  \par\addvspace{11pt plus\p@}
   {\normalfont \scshape \centering #1 \quad \hyperlink{page.#2}{\textit{#2}}\par\nobreak}}
   
 \renewcommand{\l@section}[2]{}
@@ -104,10 +96,10 @@ defernumbers
 
 % Customize the chapter title format
 \titleformat{\chapter}[display]
-  {\normalfont\huge\scshape\centering} % format of the chapter title
-  {}                                    % chapter number
-  {0pt}                                 % spacing between number and title
-  {\Huge\thispagestyle{empty}}                               % format of the chapter title
+  {\normalfont\huge\scshape\centering}   % format of the chapter title
+  {}                                     % chapter number
+  {0pt}                                  % spacing between number and title
+  {\Huge\thispagestyle{empty}}           % format of the chapter title
   [\vspace{0.5em}
   \headrule]
   \titlespacing*{\chapter}{0pt}{-25pt}{40pt}
@@ -122,24 +114,24 @@ defernumbers
 
 % Redefine section format
 \titleformat{\section}
-  {\normalfont\itshape\centering\large} % Format of the title
-  {} % Label
-  {0pt} % Space between label and title body
-  {} % Code before the title body
+  {\normalfont\itshape\centering\large}  % Format of the title
+  {}                                     % Label
+  {0pt}                                  % Space between label and title body
+  {}                                     % Code before the title body
 
-  % Redefine subsection format
+% Redefine subsection format
 \titleformat{\subsection}
-  {\normalfont\itshape\centering} % Format of the title
-  {} % Label
-  {0pt} % Space between label and title body
-  {} % Code before the title body
+  {\normalfont\itshape\centering}        % Format of the title
+  {}                                     % Label
+  {0pt}                                  % Space between label and title body
+  {}                                     % Code before the title body
 
-  % Redefine subsubsection format
+% Redefine subsubsection format
 \titleformat{\subsubsection}
-  {\normalfont\itshape\centering\small} % Format of the title
-  {} % Label
-  {0pt} % Space between label and title body
-  {} % Code before the title body
+  {\normalfont\itshape\centering\small}  % Format of the title
+  {}                                     % Label
+  {0pt}                                  % Space between label and title body
+  {}                                     % Code before the title body
 
 \let\cleardoublepage\clearpage
 
@@ -147,9 +139,9 @@ defernumbers
 \newcommand{\useRomanPageNumbering}{
   \clearpage
   \fancypagestyle{plain}
-  \fancyhf{} % Clear all headers and footers
-  \fancyfoot[RO]{\thepage} % Footer for odd pages
-  \fancyfoot[LE]{\thepage} % Footer for even pages
+  \fancyhf{}                            % Clear all headers and footers
+  \fancyfoot[RO]{\thepage}              % Footer for odd pages
+  \fancyfoot[LE]{\thepage}              % Footer for even pages
   \pagenumbering{roman}
 }
 
@@ -164,6 +156,7 @@ defernumbers
   \fancyfoot[LE]{\thepage \ \quad \textsc{The Dark Side of Capitalism}}
 }
 
+% exclude bibliography entries in the final pdf file
 \DeclareBibliographyCategory{exclude}
 \addtocategory{exclude}{hansardTS}
 \addtocategory{exclude}{hansardNS}
@@ -185,11 +178,11 @@ defernumbers
 
 \begin{document}
 
-\include{contents/TitlePage}
+\include{contents/TitlePage}                  % include title page
+\afterpage{\blankpage}                        % blak page
+\include{contents/ResponsibilityDeclaration}  % include responsiblity delcaration
 \afterpage{\blankpage}
-\include{contents/ResponsabilityDeclaration}
-\afterpage{\blankpage}
-\include{contents/Abstract}
+\include{contents/Abstract}                   % include abstract
 \afterpage{\blankpage}
 
 % Disable page numbering for the table of contents
@@ -197,46 +190,52 @@ defernumbers
 \tableofcontents
 
 \afterpage{\blankpage}
-% Roman numbering for the intro, notes, and bibliography
+% roman numbering for the intro, notes, and bibliography
 \useRomanPageNumbering
-\include{contents/chapters/intro}
+\include{contents/chapters/intro}             % include intro
 \afterpage{\blankpage}
 
+% switch back to arabic numbering
 \useArabicPageNumbering
-\part{---partONE---}
-\include{contents/chapters/chapter_1[1]}
+% use \part for dividing the document in parts
+\part{part one}                               % replace with part title
+\include{contents/chapters/chapter_1[1]}      % include chapter 1, section 1
 \afterpage{\blankpage}
-\part{---partTWO---}
-\include{contents/chapters/chapter_1[2]}
-\include{contents/chapters/chapter_2[2]}
-\include{contents/chapters/chapter_3[2]}
+\part{part two}
+\include{contents/chapters/chapter_1[2]}      % include chapter 2, section 1
+\include{contents/chapters/chapter_2[2]}      % include chapter 2, section 2
+\include{contents/chapters/chapter_3[2]}      % include chapter 2, section 3
 \afterpage{\blankpage}
-\part{---partTHREE---}
-\include{contents/chapters/chapter_1[3]}
+\part{part three}
+\include{contents/chapters/chapter_1[3]}      % include chapter 3, section 1
 \afterpage{\blankpage}
-\part{---partFOUR---}
-\include{contents/chapters/chapter_1[4]}
-\include{contents/chapters/chapter_2[4]}
-\include{contents/chapters/chapter_3[4]}
+\part{part four}
+\include{contents/chapters/chapter_1[4]}      % include chapter 4, section 1
+\include{contents/chapters/chapter_2[4]}      % include chapter 4, section 2
+\include{contents/chapters/chapter_3[4]}      % include chapter 4, section 3
 \afterpage{\blankpage}
-\part{---partFIVE---}
-\include{contents/chapters/chapter_1[5]}
-\include{contents/chapters/chapter_2[5]}
-\include{contents/chapters/chapter_3[5]}
+\part{part five}
+\include{contents/chapters/chapter_1[5]}      % include chapter 5, section 1
+\include{contents/chapters/chapter_2[5]}      % include chapter 5, section 2
+\include{contents/chapters/chapter_3[5]}      % include chapter 5, section 3
 \include{contents/chapters/end}
 \afterpage{\blankpage}
 
-\include{contents/statement}
+\include{contents/statement}                  % include statement if needed
 \afterpage{\blankpage}
 
-\printendnotes
+\printendnotes                                % print the endnotes
 \afterpage{\blankpage}
 
-\include{contents/chapters/manuscripts}
+\include{contents/chapters/manuscripts}       % include manuscripts
+% add the chapter to the table of contents
 \addcontentsline{toc}{chapter}{Manuscripts}
 
+% print the bibliography
+% I divided it in primary sources, by keyword {primary}
 \printbibliography[keyword={primary},title={Primary Sources},notcategory=exclude,heading=bibintoc,]
+% and secondary sources, by keyword {secondary}
 \printbibliography[keyword={secondary},title={Secondary Sources},heading=bibintoc,]
 
 \end{document}
-% -----------------------------------------------------------------
+%----------------------------------------------------------------------

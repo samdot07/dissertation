@@ -1,0 +1,242 @@
+% tipo di documento
+\documentclass[11pt, a4paper, twoside, openright]{report}
+% encoding del testo
+\usepackage[T1]{fontenc}
+% dimensione dei margini
+\usepackage[a4paper,margin=1in]{geometry}
+% lingua per la bibliografia
+% lingua del testo
+\usepackage[english]{babel}
+% per inserire gli hyperlinks tra i vari elementi del testo 
+\usepackage[hidelinks]{hyperref}
+% lingua per la bibliografia
+\usepackage[backend=biber,
+style=geschichtsfrkl,
+sorting=ynt,
+defernumbers
+]{biblatex}
+% Load your .bib file
+\addbibresource{bibliography.bib}
+\usepackage{enotez}
+% per modificare l'header delle pagine 
+\usepackage{fancyhdr}
+% uso delle immagini
+\usepackage{graphicx}  
+% package e comando per creare pagine vuote
+\usepackage{afterpage}
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{fourier-orns}
+% Include the titlesec package
+\usepackage{titlesec}
+\usepackage[nottoc]{tocbibind}
+\usepackage{fontspec}
+\usepackage{xtemplate}
+
+% Redirect footnotes to enotez
+\let\footnote=\endnote
+% Set up enotez for the whole document
+\setenotez{
+  backref = true,   % Enable back references
+  totoc = auto,     % Include in table of contents
+  reset = true,     % Reset endnote counters at each chapter
+}
+
+% blank page
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage
+}
+
+% Modifica lo stile dell'header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\rightmark}
+\rhead{\textbf{\thepage}}
+\fancyfoot{}
+\setlength{\headheight}{15pt}
+
+
+% Set the main font to San Francisco by referencing the uploaded font files
+\setmainfont[
+    ItalicFont = NewYorkItalic.ttf,
+]{NewYork.ttf}
+% -----------------------------------------------------------------
+
+%fancy header
+\renewcommand{\headrule}{%
+\vspace{-8pt}\hrulefill
+\raisebox{-2.1pt}{\quad\decofourleft\decoone\decofourright\quad}\hrulefill}
+\title{Decorative line}
+
+% Modifica lo stile dell'header
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{}
+\rhead{}
+\setlength{\headheight}{16.64995pt}
+
+% Disable numbering for sections and subsections
+\makeatletter
+\renewcommand{\@chapapp}{}
+\renewcommand{\numberline}[1]{}
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\renewcommand{\thepart}{}
+
+\renewcommand{\@dotsep}{1} % Adjust spacing between dots in TOC, if needed
+
+% Customize the part entry in TOC
+\renewcommand{\l@part}[2]{%
+  \par\addvspace{11pt plus\p@}%
+  {\normalfont \scshape #1\par\nobreak}}%
+
+\renewcommand{\l@chapter}[2]{%
+  \par\addvspace{11pt plus\p@}%
+  {\normalfont \scshape \centering #1 \quad \hyperlink{page.#2}{\textit{#2}}\par\nobreak}}
+  
+\renewcommand{\l@section}[2]{}
+\renewcommand{\l@subsection}[2]{}
+\makeatother
+
+% Customize the chapter title format
+\titleformat{\chapter}[display]
+  {\normalfont\huge\scshape\centering} % format of the chapter title
+  {}                                    % chapter number
+  {0pt}                                 % spacing between number and title
+  {\Huge\thispagestyle{empty}}                               % format of the chapter title
+  [\vspace{0.5em}
+  \headrule]
+  \titlespacing*{\chapter}{0pt}{-25pt}{40pt}
+% Customize part titles
+\titleformat{\part}[display]
+  {\centering\huge\scshape}
+  {}
+  {0pt}
+  {\Huge\thispagestyle{empty}}
+  [\vspace{0.5em}
+  \headrule]
+
+% Redefine section format
+\titleformat{\section}
+  {\normalfont\itshape\centering\large} % Format of the title
+  {} % Label
+  {0pt} % Space between label and title body
+  {} % Code before the title body
+
+  % Redefine subsection format
+\titleformat{\subsection}
+  {\normalfont\itshape\centering} % Format of the title
+  {} % Label
+  {0pt} % Space between label and title body
+  {} % Code before the title body
+
+  % Redefine subsubsection format
+\titleformat{\subsubsection}
+  {\normalfont\itshape\centering\small} % Format of the title
+  {} % Label
+  {0pt} % Space between label and title body
+  {} % Code before the title body
+
+\let\cleardoublepage\clearpage
+
+% Custom command to switch to plain style for special pages
+\newcommand{\useRomanPageNumbering}{
+  \clearpage
+  \fancypagestyle{plain}
+  \fancyhf{} % Clear all headers and footers
+  \fancyfoot[RO]{\thepage} % Footer for odd pages
+  \fancyfoot[LE]{\thepage} % Footer for even pages
+  \pagenumbering{roman}
+}
+
+% Command to revert to the default fancy footers
+\newcommand{\useArabicPageNumbering}{
+  \clearpage
+  \pagestyle{fancy}
+  \pagenumbering{arabic}
+  % Define the footer for odd pages (right side)
+  \fancyfoot[RO]{\textsc{The Dark Side of Capitalism} \quad \thepage}
+  % Define the footer for even pages (left side)
+  \fancyfoot[LE]{\thepage \ \quad \textsc{The Dark Side of Capitalism}}
+}
+
+\DeclareBibliographyCategory{exclude}
+\addtocategory{exclude}{hansardTS}
+\addtocategory{exclude}{hansardNS}
+\addtocategory{exclude}{hansard}
+\addtocategory{exclude}{aucklandpapers}
+\addtocategory{exclude}{huskisson}
+\addtocategory{exclude}{parlhist}
+\addtocategory{exclude}{chathampapers}
+\addtocategory{exclude}{liverpoolpapers}
+\addtocategory{exclude}{reportjamaica}
+\addtocategory{exclude}{reportCS}
+\addtocategory{exclude}{reportDC}
+\addtocategory{exclude}{customs5}
+\addtocategory{exclude}{co}
+\addtocategory{exclude}{calendarstatepaper}
+\addtocategory{exclude}{clarksonPr}
+\addtocategory{exclude}{memorandum}
+% -----------------------------------------------------------------
+
+\begin{document}
+
+\include{contents/TitlePage}
+\afterpage{\blankpage}
+\include{contents/ResponsabilityDeclaration}
+\afterpage{\blankpage}
+\include{contents/Abstract}
+\afterpage{\blankpage}
+
+% Disable page numbering for the table of contents
+\thispagestyle{empty}
+\tableofcontents
+
+\afterpage{\blankpage}
+% Roman numbering for the intro, notes, and bibliography
+\useRomanPageNumbering
+\include{contents/chapters/intro}
+\afterpage{\blankpage}
+
+\useArabicPageNumbering
+\part{---partONE---}
+\include{contents/chapters/chapter_1[1]}
+\afterpage{\blankpage}
+\part{---partTWO---}
+\include{contents/chapters/chapter_1[2]}
+\include{contents/chapters/chapter_2[2]}
+\include{contents/chapters/chapter_3[2]}
+\afterpage{\blankpage}
+\part{---partTHREE---}
+\include{contents/chapters/chapter_1[3]}
+\afterpage{\blankpage}
+\part{---partFOUR---}
+\include{contents/chapters/chapter_1[4]}
+\include{contents/chapters/chapter_2[4]}
+\include{contents/chapters/chapter_3[4]}
+\afterpage{\blankpage}
+\part{---partFIVE---}
+\include{contents/chapters/chapter_1[5]}
+\include{contents/chapters/chapter_2[5]}
+\include{contents/chapters/chapter_3[5]}
+\include{contents/chapters/end}
+\afterpage{\blankpage}
+
+\include{contents/statement}
+\afterpage{\blankpage}
+
+\printendnotes
+\afterpage{\blankpage}
+
+\include{contents/chapters/manuscripts}
+\addcontentsline{toc}{chapter}{Manuscripts}
+
+\printbibliography[keyword={primary},title={Primary Sources},notcategory=exclude,heading=bibintoc,]
+\printbibliography[keyword={secondary},title={Secondary Sources},heading=bibintoc,]
+
+\end{document}
+% -----------------------------------------------------------------

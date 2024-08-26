@@ -23,7 +23,7 @@ To compile this LaTeX document, you will need LaTeX installed on your system alo
    git clone https://github.com/samdot07/dissertation.git
 2. Navigate to the project directory:
    ```bash
-   cd REPOSITORY
+   cd dissertation
 4. Install LaTeX packages and ensure you have xelatex and biber installed.
 5. Ensure your VS Code settings are configured for LaTeX and biber as specified in the settings.json file.
 

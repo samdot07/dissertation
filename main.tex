@@ -138,9 +138,9 @@ defernumbers
 \newcommand{\useRomanPageNumbering}{
   \clearpage
   \fancypagestyle{plain}
-  \fancyhf{}                            % Clear all headers and footers
-  \fancyfoot[RO]{\thepage}              % Footer for odd pages
-  \fancyfoot[LE]{\thepage}              % Footer for even pages
+  \fancyhf{}                             % Clear all headers and footers
+  \fancyfoot[RO]{\thepage}               % Footer for odd pages
+  \fancyfoot[LE]{\thepage}               % Footer for even pages
   \pagenumbering{roman}
 }
 
@@ -157,22 +157,7 @@ defernumbers
 
 % exclude bibliography entries in the final pdf file
 \DeclareBibliographyCategory{exclude}
-\addtocategory{exclude}{hansardTS}
-\addtocategory{exclude}{hansardNS}
-\addtocategory{exclude}{hansard}
-\addtocategory{exclude}{aucklandpapers}
-\addtocategory{exclude}{huskisson}
-\addtocategory{exclude}{parlhist}
-\addtocategory{exclude}{chathampapers}
-\addtocategory{exclude}{liverpoolpapers}
-\addtocategory{exclude}{reportjamaica}
-\addtocategory{exclude}{reportCS}
-\addtocategory{exclude}{reportDC}
-\addtocategory{exclude}{customs5}
-\addtocategory{exclude}{co}
-\addtocategory{exclude}{calendarstatepaper}
-\addtocategory{exclude}{clarksonPr}
-\addtocategory{exclude}{memorandum}
+\addtocategory{exclude}{BibEntryName}    % replace with the name of the bibliography entry to exclude
 % -----------------------------------------------------------------
 
 \begin{document}
